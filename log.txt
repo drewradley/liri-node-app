@@ -1,0 +1,30 @@
+
+------------------------------------------
+* Title of the movie: Dark City
+      * Year the movie came out: 1998
+      * IMDB Rating of the movie: 7.7
+      * Rotten Tomatoes Rating of the movie: 66/100
+      * Country where the movie was produced: Australia, USA
+      * Language of the movie: English
+      * Plot of the movie: A man struggles with memories of his past, including a wife he cannot remember, in a nightmarish world with no sun.
+      * Actors in the movie: Rufus Sewell, William Hurt, Kiefer Sutherland, Jennifer Connelly
+      * ----------------^^^^^^^^^^^^^^^^^^^^^^^^^^----------------
+------------------------------------------
+
+------------------------------------------
+-------------vvvvvvvvvvvvvvvvvvvvvvvv--------------      
+         * Name of the venue: Carioca Club Pinheiros
+
+         * Venue location: Sao Paulo, Brazil
+    
+         * Date of the Event: 10/07/2018
+         * -------------^^^^^^^^^^^^^^^^^^--------------
+------------------------------------------
+
+------------------------------------------
+ * Artist(s): Backstreet Boys) 
+      * The song's name: I Want It That Way)
+      * A preview link of the song from Spotify: https://api.spotify.com/v1/tracks/6e40mgJiCid5HRAGrbpGA6)
+      * The album that the song is from: The Hits--Chapter One)
+      '----------------^^^^^^^^^^^^^^^^^^^----------------
+------------------------------------------

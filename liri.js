@@ -50,6 +50,11 @@ function SpotifyThis()
     
           console.log(" * The album that the song is from: "+songs[i].album.name)
           console.log('----------------^^^^^^^^^^^^^^^^^^^----------------')
+          logThis(` * Artist(s): ${songs[i].artists[0].name}) 
+  * The song's name: ${songs[i].name})
+  * A preview link of the song from Spotify: ${songs[i].href})
+  * The album that the song is from: ${songs[i].album.name})
+  '----------------^^^^^^^^^^^^^^^^^^^----------------`)
         }
       });
    }
@@ -70,9 +75,15 @@ function SpotifyThis()
 
       console.log(" * The album that the song is from: "+songs[i].album.name)
       console.log('----------------^^^^^^^^^^^^^^^^^^^----------------')
+      logThis(` * Artist(s): ${songs[i].artists[0].name}) 
+      * The song's name: ${songs[i].name})
+      * A preview link of the song from Spotify: ${songs[i].href})
+      * The album that the song is from: ${songs[i].album.name})
+      '----------------^^^^^^^^^^^^^^^^^^^----------------`)
     }
       });
   }
+  
 }
 function MovieThis()
 {
@@ -92,6 +103,15 @@ function MovieThis()
       * Plot of the movie: ${JSON.parse(body).Plot}
       * Actors in the movie: ${JSON.parse(body).Actors}`);
       console.log('----------------^^^^^^^^^^^^^^^^^^^^^^^^^^----------------')
+      logThis(`* Title of the movie: ${JSON.parse(body).Title}
+      * Year the movie came out: ${JSON.parse(body).Year}
+      * IMDB Rating of the movie: ${JSON.parse(body).imdbRating}
+      * Rotten Tomatoes Rating of the movie: ${JSON.parse(body).Ratings[1].Value}
+      * Country where the movie was produced: ${JSON.parse(body).Country}
+      * Language of the movie: ${JSON.parse(body).Language}
+      * Plot of the movie: ${JSON.parse(body).Plot}
+      * Actors in the movie: ${JSON.parse(body).Actors}
+      * ----------------^^^^^^^^^^^^^^^^^^^^^^^^^^----------------`);
     }
   });
 
@@ -115,7 +135,7 @@ function ConcertThis()
         // console.log(body)
         // bandArray.forEach(function(event){
           for(var i=0;i<bandArray.length; i++){
-            if(i>1)return;//sometimes I don't want to look a gazillion results when I'm working
+            if(i>0)return;//sometimes I don't want to look a gazillion results when I'm working
             var dateTime = new Date(bandArray[i].datetime);
             dateTime = moment(dateTime).format("MM/DD/YYYY"); 
             var StateOrCountry = bandArray[i].venue.region;
@@ -128,6 +148,16 @@ function ConcertThis()
      
           * Date of the Event: ${dateTime}`)
          console.log("-------------^^^^^^^^^^^^^^^^^^--------------")
+
+         logThis(`-------------vvvvvvvvvvvvvvvvvvvvvvvv--------------      
+         * Name of the venue: ${bandArray[i].venue.name}
+
+         * Venue location: ${bandArray[i].venue.city+", "+StateOrCountry}
+    
+         * Date of the Event: ${dateTime}
+         * -------------^^^^^^^^^^^^^^^^^^--------------`
+           
+         )
         }
     }
   });
@@ -137,9 +167,28 @@ function ConcertThis()
 function doWhatItSays(){
   fs.readFile('random.txt', 'utf8', function(err, data){
       data = data.split(',');
-      console.log(data[1]);
+      // console.log(data[1]);
       commandName=data[1];
       SpotifyThis();
   })
 }
+function logThis(text)
+{
+  // var textFile = text;
+  fs.appendFile("log.txt", "\n------------------------------------------\n"
+        +text+"\n------------------------------------------\n", function(err) {
 
+    // If an error was experienced we will log it.
+    if (err) {
+      console.log(err);
+    }
+  
+    // If no error is experienced, we'll log the phrase "Content Added" to our node console.
+    else {
+      // console.log(textFile);
+      
+  
+    }
+  
+  });
+}
