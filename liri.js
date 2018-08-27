@@ -44,12 +44,12 @@ function SpotifyThis()
         for (var i=0;i,songs.length;i++)   
           {
             if(i>0)return;
-          console.log(" * Artist(s): "+songs[i].artists[0].name) 
-          console.log(" * The song's name: "+songs[i].name)
-          console.log(" * A preview link of the song from Spotify: "+songs[i].href)
-    
-          console.log(" * The album that the song is from: "+songs[i].album.name)
-          console.log('----------------^^^^^^^^^^^^^^^^^^^----------------')
+          console.log(` * Artist(s): ${songs[i].artists[0].name}) 
+          * The song's name: ${songs[i].name})
+          * A preview link of the song from Spotify: ${songs[i].href})
+          * The album that the song is from: ${songs[i].album.name})
+          '----------------^^^^^^^^^^^^^^^^^^^----------------`)
+
           logThis(` * Artist(s): ${songs[i].artists[0].name}) 
   * The song's name: ${songs[i].name})
   * A preview link of the song from Spotify: ${songs[i].href})
@@ -68,13 +68,12 @@ function SpotifyThis()
       
       for (var i=0;i,songs.length;i++)   
       {
-        if(i>0)return;
-      console.log(" * Artist(s): "+songs[i].artists[0].name) 
-      console.log(" * The song's name: "+songs[i].name)
-      console.log(" * A preview link of the song from Spotify: "+songs[i].href)
-
-      console.log(" * The album that the song is from: "+songs[i].album.name)
-      console.log('----------------^^^^^^^^^^^^^^^^^^^----------------')
+        if(i>2)return;
+      console.log(` * Artist(s): ${songs[i].artists[0].name}) 
+      * The song's name: ${songs[i].name})
+      * A preview link of the song from Spotify: ${songs[i].href})
+      * The album that the song is from: ${songs[i].album.name})
+      '----------------^^^^^^^^^^^^^^^^^^^----------------`)
       logThis(` * Artist(s): ${songs[i].artists[0].name}) 
       * The song's name: ${songs[i].name})
       * A preview link of the song from Spotify: ${songs[i].href})
@@ -101,8 +100,8 @@ function MovieThis()
       * Country where the movie was produced: ${JSON.parse(body).Country}
       * Language of the movie: ${JSON.parse(body).Language}
       * Plot of the movie: ${JSON.parse(body).Plot}
-      * Actors in the movie: ${JSON.parse(body).Actors}`);
-      console.log('----------------^^^^^^^^^^^^^^^^^^^^^^^^^^----------------')
+      * Actors in the movie: ${JSON.parse(body).Actors}
+      ----------------^^^^^^^^^^^^^^^^^^^^^^^^^^----------------`);
       logThis(`* Title of the movie: ${JSON.parse(body).Title}
       * Year the movie came out: ${JSON.parse(body).Year}
       * IMDB Rating of the movie: ${JSON.parse(body).imdbRating}
@@ -146,8 +145,8 @@ function ConcertThis()
 
           * Venue location: ${bandArray[i].venue.city+", "+StateOrCountry}
      
-          * Date of the Event: ${dateTime}`)
-         console.log("-------------^^^^^^^^^^^^^^^^^^--------------")
+          * Date of the Event: ${dateTime}
+         -------------^^^^^^^^^^^^^^^^^^--------------`)
 
          logThis(`-------------vvvvvvvvvvvvvvvvvvvvvvvv--------------      
          * Name of the venue: ${bandArray[i].venue.name}
@@ -168,8 +167,15 @@ function doWhatItSays(){
   fs.readFile('random.txt', 'utf8', function(err, data){
       data = data.split(',');
       // console.log(data[1]);
+      command=data[0];
       commandName=data[1];
-      SpotifyThis();
+      if(command=="spotify-this-song")
+        SpotifyThis();
+      if(command=="movie-this")
+        MovieThis();
+      if(command=="concert-this")
+        ConcertThis();
+  
   })
 }
 function logThis(text)
